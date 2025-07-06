@@ -1,0 +1,25 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+:root {
+  --lead: #212121;
+  --gold-finger: #F2BD12;
+  --eye-ball: #FFFDF7;
+  --hint-yellow: #FCF1CC;
+  --pure-white: #FFF;
+}
+
+body {
+  background: var(--eye-ball);
+}
+
+<!-- Header Styles -->
+
+<!-- Section styles -->
+
+<!-- Footer Styles -->
