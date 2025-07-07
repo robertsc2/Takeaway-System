@@ -4,14 +4,22 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto Condensed", sans-serif;
+    /* border: .1rem solid red; */
 }
 
   :root {
+    /*Header colors*/
+    --lead2: #3b2f22;
+    --rustic2: #8a5d58;
+    --cream2: #e0d9cd;
+    /*Page colors*/
     --lead: #4B3B2B;
     --rustic: #A9746E;
     --cream: #F5EFE6;
     --tan-hint: #D9C9B6;
     --pure-white: #FFF;
+
+
   }
 
 body {
@@ -58,7 +66,12 @@ li{
 
 }
 
-
+img{
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  display: block;
+}
 
 
 
@@ -66,18 +79,18 @@ li{
 
 /* Header */
 
-
-
 .navbar {
   min-height: 14vh;
-
-
+  background: var(--cream);
 }
 
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--rustic);
+  color: var(--rustic2);
+}
+.signin.btn {
+  background: var(--rustic2);
 }
 
 .btn {
@@ -143,9 +156,29 @@ li{
 /* Sections styling */
 
 .hero-section {
- background: gold;
  min-height: calc(100vh - 14vh);
 } 
+
+
+.hero-content,
+.hero-image-container {
+  flex: 1;
+}
+
+
+
+
+h1 {
+  font-size: 5.6vw;
+  color: var(--lead);
+  
+}
+
+h1 span {
+  color: var(--rustic);
+}
+
+
 
 
 
