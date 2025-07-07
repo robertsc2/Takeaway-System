@@ -6,16 +6,16 @@
     font-family: "Roboto Condensed", sans-serif;
 }
 
-:root {
-  --lead: #212121;
-  --gold-finger: #F2BD12;
-  --eye-ball: #FFFDF7;
-  --hint-yellow: #FCF1CC;
-  --pure-white: #FFF;
-}
+  :root {
+    --lead: #4B3B2B;
+    --rustic: #A9746E;
+    --cream: #F5EFE6;
+    --tan-hint: #D9C9B6;
+    --pure-white: #FFF;
+  }
 
 body {
-  background: var(--eye-ball);
+  background: var(--cream);
 }
 
 
@@ -77,13 +77,13 @@ li{
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: var(--gold-finger);
+  color: var(--rustic);
 }
 
 .btn {
   display: inline-block;
   padding: 0.9rem 2rem;
-  background: var(--gold-finger);
+  background: var(--rustic);
   border-radius: 1rem;
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
@@ -105,13 +105,15 @@ li{
 }
 
 .cart-icon{
-  color: var(--lead);
   font-size: 1.3rem;
+  position: relative;
 }
 
 
 .cart-icon .cart-value {
   position: absolute;
+  top: 50%;
+  right: -10px;
   font-size: 0.85rem;
   width: 20px;
   aspect-ratio: 1;
@@ -120,14 +122,17 @@ li{
   -moz-border-radius: 100vw;
   -ms-border-radius: 100vw;
   -o-border-radius: 100vw;
-  background: var(--gold-finger);
+  background: var(--rustic);
   color: var(--lead);
   text-align: center;
   line-height: 20px;
-  
+
 }
 
-
+.desktop-action .three-bar {
+  font-size: 1.5rem;
+  display: none;
+}
 
 
 
@@ -137,9 +142,18 @@ li{
 
 /* Sections styling */
 
+.hero-section {
+ background: gold;
+ min-height: calc(100vh - 14vh);
+} 
+
+
+
+
 /* Footer */
 
 
 
 
 /* Query styling */
+
