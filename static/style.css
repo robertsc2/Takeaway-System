@@ -1,10 +1,8 @@
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto Condensed", sans-serif;
-    /* border: .1rem solid red; */
 }
 
   :root {
@@ -314,38 +312,43 @@ h5 {
 }
 
 
-/* Section 2*/
-.store-info {
-  background: #f7e8d0;
-  border: 1.5px solid var(--rustic2);
+
+
+/*Section 2*/
+.order-cart img {
+  width: 15rem
+}
+
+.order-card{
+  flex: 1;
+  flex-basis: 300px;
+  background: var(--pure-white);
+  border: .15rem solid var(--rustic2);
+  border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.05) 8px 8px 8px,  rgba(0, 0, 0, 0.05) 8px 8px 8px inset;
+}
+
+.wrapper .text-center h2 {
+  font-size: 2.8rem;
   color: var(--lead2);
-  box-shadow: 0 4px 16px rgba(75, 59, 43, 0.10);
+  margin-bottom: 1rem;
 }
 
-.store-info h2 {
-  color: var(--rustic2);
-  font-size: 2.2rem;
 
-  margin-bottom: 0.7rem;
-}
 
-.store-info p,
-.store-info li {
-  color: var(--lead2);
-  font-size: 1.15rem;
-  font-weight: 500;
-  line-height: 1.8;
-  letter-spacing: 0.01em;
-}
 
-.store-info ul {
-  padding-left: 1.5rem;
-  margin: 0.5rem 0 0 0;
-}
 
+
+
+/* Section 3*/
 .store-info {
-  background: var(--tan-hint);
+  background: var(--pure-white);
   border-radius: 1rem;
+  border: none;
   padding: 2rem 1.5rem;
   margin: 3rem auto;
   max-width: 800px;
@@ -354,10 +357,16 @@ h5 {
   flex-direction: column;
   align-items: flex-start;
   gap: 1.2rem;
+  color: var(--lead2);
+  transition: box-shadow 0.2s;
 }
 
+.store-info:hover {
+  box-shadow: 0 4px 16px rgba(75, 59, 43, 0.16);
+}
+/* Store Info Headings and Text */
 .store-info h2 {
-  color: var(--lead2);
+  color: var(--rustic2);
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -373,6 +382,14 @@ h5 {
   padding-left: 1.2rem;
   margin: 0;
 }
+
+
+
+
+
+
+
+
 
 
 

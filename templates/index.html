@@ -61,9 +61,8 @@
                         amet consectetur adipisicing elit. 
                     </p>
                     <div>
-                        <a href="#" class="btn">Order Now</a>
-                        
-                        
+                        <a href="/menu" class="btn">Order Now</a>
+
                     </div>
                 </div>
 
@@ -117,7 +116,49 @@
                 </div>
             </div>
         </section>
+
+        <div class="seperating-bar-2"></div>
+
+        <section class="wrapper p-top">
+            <div class="text-center">
+                <h5> Our Menu's </h5>
+                <h2>Popular Picks</h2>
+            </div>
+            <div class="menu-list text-center flex mt-4 gap-3">
+                <div class="order-card">
+                    <div class="card-image">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image">
+                    </div>
+                    <h4>Food item name</h4>
+                    <h4 class="price">$00.00</h4>
+                    <a href="#" class="btn">Add to cart</a>
+                </div>
+                <div class="order-card">
+                    <div class="card-image">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image">
+                    </div>
+                    <h4>Food item name</h4>
+                    <h4 class="price">$00.00</h4>
+                    <a href="#" class="btn">Add to cart</a>
+                </div>
+                <div class="order-card">
+                    <div class="card-image">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image">
+                    </div>
+                    <h4>Food item name</h4>
+                    <h4 class="price">$00.00</h4>
+                    <a href="#" class="btn">Add to cart</a>
+                </div>
+            </div>
+        </section>
     </main>
+ 
+
+
+
+
+
+
 
     <div class="seperating-bar-2"></div>
 
@@ -174,17 +215,6 @@ document.querySelectorAll('a[href="/contact"]').forEach(function(link) {
 </script>
 
 
-Fix: Delete that script - it is no longer needed cause ive changed the 
-contact link to point directly to the store-info section.
-
-Change this
-<li><a href="/contact">Contact</a></li>
-To this:
-<li><a href="/#store-info">Contact</a></li>
-Add an id to the store-info section:
-<section class="store-info wrapper" id="store-info">
-</section>
-Remove contact route from app.py and delete html file
 
 
 
