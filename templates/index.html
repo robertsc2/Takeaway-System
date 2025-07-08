@@ -22,7 +22,8 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/menu">Menu</a></li>
                 <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/#store-info">Contact</a></li>
+    
             </ul>
 
             <div class="desktop-action flex gap-2">
@@ -45,7 +46,8 @@
         </nav>
     </header>
 
-     
+    <div class="seperating-bar"></div>
+
     <!-- Main Content Section -->
     <main>  
         <section>
@@ -54,8 +56,8 @@
                     <h1>Lorem ipsum 
                         <span>dolor sit</span>
                     </h1>
-                     <p>
-                        Lorem ipsum dolor sit 
+                     <p class="para">
+                        Lorem ipsum dolor sit<br>
                         amet consectetur adipisicing elit. 
                     </p>
                     <div>
@@ -70,13 +72,120 @@
                 </div>
             </div>  
         </section>
+
+        <div class="seperating-bar-2"></div>
+        
+        <section>
+            <div class="wrapper p-top">
+                <div class="text-center">
+                    <h5> Why Order Through Us? </h5>
+                    <h2>Delicious Food, Fast Delivery.</h2>
+                </div>
+            </div>
+
+            <div class="card-row">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                    </div>
+                    <h3>Quality Ingredients</h3>
+                    <p>We use only the freshest ingredients sourced from local farms.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                    </div>
+                    <h3>Wide Variety</h3>
+                    <p>We offer a wide variety of dishes to satisfy every craving.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                    </div>
+                    <h3>Easy to Order</h3>
+                    <p>Our online ordering system is simple and user-friendly.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>We prioritize quick and efficient delivery to your doorstep.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
+    <div class="seperating-bar-2"></div>
 
+    <section class="store-info wrapper" id="store-info">
+        <div class="store-details">
+            <div>
+                <h2 style="text-decoration: underline;">Contact & Store Information</h2>
+                <p><strong>Address:</strong> 14 Bay Street, Matua, Tauranga 3110</p>
+                <p><strong>Email:</strong> <a href="mailto:info@oingoboingo.co.nz">info@oingoboingo.co.nz</a></p>
+                <p><strong>Phone:</strong> <a href="tel:+6471234567">07 123 4567</a></p>
+                <h3>Opening Times:</h3>
+                <ul>
+                    <li>Mon–Fri: 11am – 9pm</li>
+                    <li>Sat–Sun: 12pm – 9:30pm</li>
+                </ul>
+            </div>
+        
+        </div>
+    </section>
+    <div class="seperating-bar-3"></div>
     <!-- Footer Section -->
     <footer> 
 
+        <div class="wrapper">
+            <div class="footer-content">
+                <p>&copy; 2023 Oingo Boingo Brothers. All rights reserved.</p>
+                <ul class="social-links flex gap-2">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
     </footer>
 
 </body>
 </html> 
+
+<!-- Contact Link To Store Info -->
+<!-- This script ensures that clicking the "Contact" link on the index page scrolls to the store information section -->
+<script>
+document.querySelectorAll('a[href="/contact"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        // Only handle if on index page
+        if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+            e.preventDefault();
+            const storeInfo = document.querySelector('.store-info');
+            if (storeInfo) {
+                storeInfo.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+</script>
+
+
+Fix: Delete that script - it is no longer needed cause ive changed the 
+contact link to point directly to the store-info section.
+
+Change this
+<li><a href="/contact">Contact</a></li>
+To this:
+<li><a href="/#store-info">Contact</a></li>
+Add an id to the store-info section:
+<section class="store-info wrapper" id="store-info">
+</section>
+Remove contact route from app.py and delete html file
+
+
+
+
