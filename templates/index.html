@@ -1,233 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takeaway System Website</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Takeaway System Website</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body>
+        <!-- Header Section -->
+        <!-- Header Section -->
+        <header>
+            <nav class="navbar flex between wrapper">
+                <a href="/" class="logo">Oingo Boingo Brothers</a>
+                <ul class="nav-links flex gap-3">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/#store-info">Contact</a></li>
+                </ul>
+                <div class="desktop-action flex gap-2">
+                    <a href="#" class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-value">0</span>
+                    </a>
+                    <!-- W3 Schools login button -->
+                    <!-- Button to open the modal login form -->
+                    <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
+                        Sign In &nbsp;
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
 
+                    <div id="id01" class="modal">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <form class="modal-content animate" action="/action_page.php">
+                            <div class="imgcontainer">
+                                <img src="img_avatar2.png" alt="Avatar" class="avatar" />
+                            </div>
+                            <div class="container">
+                                <label for="uname"><b>Username</b></label>
+                                <input type="text" placeholder="Enter Username" name="uname" required />
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="psw" required />
+                                <button type="submit">Login</button>
+                                <label> <input type="checkbox" checked="checked" name="remember" /> Remember me </label>
+                            </div>
+                            <div class="container" style="background-color: #f1f1f1;">
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                <span class="psw">Forgot <a href="#">password?</a></span>
+                            </div>
+                        </form>
+                    </div>
 
-    <!-- Header Section -->
-    <!-- Header Section -->
-    <header>
-        <nav class="navbar flex between wrapper">
-           <a href="/" class="logo">Oingo Boingo Brothers</a>
-           <ul class="nav-links flex gap-3">
-              <li><a href="/">Home</a></li>
-              <li><a href="/menu">Menu</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/#store-info">Contact</a></li>
-           </ul>
-           <div class="desktop-action flex gap-2">
-              <a href="#" class="cart-icon">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="cart-value">0</span>
-              </a>
-              <!-- W3 Schools login button -->
-              <!-- Button to open the modal login form -->
-              <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
-               Sign In
-               &nbsp;
-               <i class="fa-solid fa-arrow-right-from-bracket"></i>
-             </button>
-             
-             <div id="id01" class="modal">
-               <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-               <form class="modal-content animate" action="/action_page.php">
-                  <div class="imgcontainer">
-                     <img src="img_avatar2.png" alt="Avatar" class="avatar">
-                  </div>
-                  <div class="container">
-                     <label for="uname"><b>Username</b></label>
-                     <input type="text" placeholder="Enter Username" name="uname" required>
-                     <label for="psw"><b>Password</b></label>
-                     <input type="password" placeholder="Enter Password" name="psw" required>
-                     <button type="submit">Login</button>
-                     <label>
-                     <input type="checkbox" checked="checked" name="remember"> Remember me
-                     </label>
-                  </div>
-                  <div class="container" style="background-color:#f1f1f1">
-                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                     <span class="psw">Forgot <a href="#">password?</a></span>
-                  </div>
-               </form>
-             </div>
-             
-             <script>
-             var modal = document.getElementById('id01');
-             window.onclick = function(event) {
-               if (event.target == modal) {
-                 modal.style.display = "none";
-               }
-             }
-             </script>
-       
-           </div>
-        </nav>
-     </header>
+                    <script>
+                        var modal = document.getElementById("id01");
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        };
+                    </script>
+                </div>
+            </nav>
+        </header>
 
-    <div class="seperating-bar"></div>
+        <div class="seperating-bar"></div>
 
-    <!-- Main Content Section -->
-    <main>  
-        <section>
-            <div class ="hero-section flex wrapper">
-                <div class="hero-content">
-                    <h1>Lorem ipsum 
-                        <span>dolor sit</span>
-                    </h1>
-                     <p class="para">
-                        Lorem ipsum dolor sit<br>
-                        amet consectetur adipisicing elit. 
-                    </p>
-                    <div>
-                        <a href="/menu" class="btn">Order Now</a>
+        <!-- Main Content Section -->
+        <main>
+            <section>
+                <div class="hero-section flex wrapper">
+                    <div class="hero-content">
+                        <h1>
+                            Lorem ipsum
+                            <span>dolor sit</span>
+                        </h1>
+                        <p class="para">
+                            Lorem ipsum dolor sit<br />
+                            amet consectetur adipisicing elit.
+                        </p>
+                        <div>
+                            <a href="/menu" class="btn">Order Now</a>
+                        </div>
+                    </div>
 
+                    <div class="hero-image-container">
+                        <img src="/static/images/placeholder.svg" />
+                    </div>
+                </div>
+            </section>
+
+            <div class="seperating-bar-2"></div>
+
+            <section>
+                <div class="wrapper p-top">
+                    <div class="text-center">
+                        <h5>Why Order Through Us?</h5>
+                        <h2>Delicious Food, Fast Delivery.</h2>
                     </div>
                 </div>
 
-                <div class="hero-image-container">
-                    <img src="/static/images/placeholder.svg">
-                </div>
-            </div>  
-        </section>
+                <div class="card-row">
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image" />
+                        </div>
+                        <h3>Quality Ingredients</h3>
+                        <p>We use only the freshest ingredients sourced from local farms.</p>
+                    </div>
 
-        <div class="seperating-bar-2"></div>
-        
-        <section>
-            <div class="wrapper p-top">
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image" />
+                        </div>
+                        <h3>Wide Variety</h3>
+                        <p>We offer a wide variety of dishes to satisfy every craving.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image" />
+                        </div>
+                        <h3>Easy to Order</h3>
+                        <p>Our online ordering system is simple and user-friendly.</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image" />
+                        </div>
+                        <h3>Fast Delivery</h3>
+                        <p>We prioritize quick and efficient delivery to your doorstep.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="seperating-bar-2"></div>
+
+            <section class="wrapper p-top">
                 <div class="text-center">
-                    <h5> Why Order Through Us? </h5>
-                    <h2>Delicious Food, Fast Delivery.</h2>
+                    <h5>Our Menu's</h5>
+                    <h2>Popular Picks</h2>
                 </div>
-            </div>
-
-            <div class="card-row">
-                <div class="card">
-                    <div class="card-content">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                <div class="menu-list text-center flex mt-4 gap-3">
+                    <div class="order-card">
+                        <div class="card-image">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage" />
+                        </div>
+                        <h4>Food item name</h4>
+                        <h4 class="price">$00.00</h4>
+                        <a href="#" class="btn">Add to cart</a>
                     </div>
-                    <h3>Quality Ingredients</h3>
-                    <p>We use only the freshest ingredients sourced from local farms.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                    <div class="order-card">
+                        <div class="card-image">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage" />
+                        </div>
+                        <h4>Food item name</h4>
+                        <h4 class="price">$00.00</h4>
+                        <a href="#" class="btn">Add to cart</a>
                     </div>
-                    <h3>Wide Variety</h3>
-                    <p>We offer a wide variety of dishes to satisfy every craving.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
+                    <div class="order-card">
+                        <div class="card-image">
+                            <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage" />
+                        </div>
+                        <h4>Food item name</h4>
+                        <h4 class="price">$00.00</h4>
+                        <a href="#" class="btn">Add to cart</a>
                     </div>
-                    <h3>Easy to Order</h3>
-                    <p>Our online ordering system is simple and user-friendly.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="card-image">
-                    </div>
-                    <h3>Fast Delivery</h3>
-                    <p>We prioritize quick and efficient delivery to your doorstep.</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
         <div class="seperating-bar-2"></div>
 
-        <section class="wrapper p-top">
-            <div class="text-center">
-                <h5> Our Menu's </h5>
-                <h2>Popular Picks</h2>
-            </div>
-            <div class="menu-list text-center flex mt-4 gap-3">
-                <div class="order-card">
-                    <div class="card-image">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage">
-                    </div>
-                    <h4>Food item name</h4>
-                    <h4 class="price">$00.00</h4>
-                    <a href="#" class="btn">Add to cart</a>
-                </div>
-                <div class="order-card">
-                    <div class="card-image">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage">
-                    </div>
-                    <h4>Food item name</h4>
-                    <h4 class="price">$00.00</h4>
-                    <a href="#" class="btn">Add to cart</a>
-                </div>
-                <div class="order-card">
-                    <div class="card-image">
-                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage">
-                    </div>
-                    <h4>Food item name</h4>
-                    <h4 class="price">$00.00</h4>
-                    <a href="#" class="btn">Add to cart</a>
+        <section class="store-info wrapper" id="store-info">
+            <div class="store-details">
+                <div>
+                    <h2 style="text-decoration: underline;">Contact & Store Information</h2>
+                    <p><strong>Address:</strong> 14 Bay Street, Matua, Tauranga 3110</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@oingoboingo.co.nz">info@oingoboingo.co.nz</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+6471234567">07 123 4567</a></p>
+                    <h3>Opening Times:</h3>
+                    <ul>
+                        <li>Mon–Fri: 11am – 9pm</li>
+                        <li>Sat–Sun: 12pm – 9:30pm</li>
+                    </ul>
                 </div>
             </div>
         </section>
-    </main>
- 
-
-
-
-
-
-
-
-    <div class="seperating-bar-2"></div>
-
-    <section class="store-info wrapper" id="store-info">
-        <div class="store-details">
-            <div>
-                <h2 style="text-decoration: underline;">Contact & Store Information</h2>
-                <p><strong>Address:</strong> 14 Bay Street, Matua, Tauranga 3110</p>
-                <p><strong>Email:</strong> <a href="mailto:info@oingoboingo.co.nz">info@oingoboingo.co.nz</a></p>
-                <p><strong>Phone:</strong> <a href="tel:+6471234567">07 123 4567</a></p>
-                <h3>Opening Times:</h3>
-                <ul>
-                    <li>Mon–Fri: 11am – 9pm</li>
-                    <li>Sat–Sun: 12pm – 9:30pm</li>
-                </ul>
+        <div class="seperating-bar-3"></div>
+        <!-- Footer Section -->
+        <footer>
+            <div class="wrapper">
+                <div class="footer-content">
+                    <p>&copy; 2023 Oingo Boingo Brothers. All rights reserved.</p>
+                    <ul class="social-links flex gap-2">
+                        <li>
+                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        
-        </div>
-    </section>
-    <div class="seperating-bar-3"></div>
-    <!-- Footer Section -->
-    <footer> 
-
-        <div class="wrapper">
-            <div class="footer-content">
-                <p>&copy; 2023 Oingo Boingo Brothers. All rights reserved.</p>
-                <ul class="social-links flex gap-2">
-                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html> 
-
-
-
-
-
-
-
-
+        </footer>
+    </body>
+</html>

@@ -1,80 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Takeaway System Website</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Takeaway System Website</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body>
+        <!-- Header Section -->
+        <header>
+            <nav class="navbar flex between wrapper">
+                <a href="/" class="logo">Oingo Boingo Brothers</a>
+                <ul class="nav-links flex gap-3">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/#store-info">Contact</a></li>
+                </ul>
+                <div class="desktop-action flex gap-2">
+                    <a href="#" class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-value">0</span>
+                    </a>
+                    <!-- W3 Schools login button -->
+                    <!-- Button to open the modal login form -->
+                    <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
+                        Sign In &nbsp;
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
 
+                    <div id="id01" class="modal">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <form class="modal-content animate" action="/action_page.php">
+                            <div class="imgcontainer">
+                                <img src="img_avatar2.png" alt="Avatar" class="avatar" />
+                            </div>
+                            <div class="container">
+                                <label for="uname"><b>Username</b></label>
+                                <input type="text" placeholder="Enter Username" name="uname" required />
+                                <label for="psw"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="psw" required />
+                                <button type="submit">Login</button>
+                                <label> <input type="checkbox" checked="checked" name="remember" /> Remember me </label>
+                            </div>
+                            <div class="container" style="background-color: #f1f1f1;">
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                <span class="psw">Forgot <a href="#">password?</a></span>
+                            </div>
+                        </form>
+                    </div>
 
-    <!-- Header Section -->
-    <!-- Header Section -->
-    <header>
-        <nav class="navbar flex between wrapper">
-           <a href="/" class="logo">Oingo Boingo Brothers</a>
-           <ul class="nav-links flex gap-3">
-              <li><a href="/">Home</a></li>
-              <li><a href="/menu">Menu</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/#store-info">Contact</a></li>
-           </ul>
-           <div class="desktop-action flex gap-2">
-              <a href="#" class="cart-icon">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="cart-value">0</span>
-              </a>
-              <!-- W3 Schools login button -->
-              <!-- Button to open the modal login form -->
-              <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
-               Sign In
-               &nbsp;
-               <i class="fa-solid fa-arrow-right-from-bracket"></i>
-             </button>
-             
-             <div id="id01" class="modal">
-               <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-               <form class="modal-content animate" action="/action_page.php">
-                  <div class="imgcontainer">
-                     <img src="img_avatar2.png" alt="Avatar" class="avatar">
-                  </div>
-                  <div class="container">
-                     <label for="uname"><b>Username</b></label>
-                     <input type="text" placeholder="Enter Username" name="uname" required>
-                     <label for="psw"><b>Password</b></label>
-                     <input type="password" placeholder="Enter Password" name="psw" required>
-                     <button type="submit">Login</button>
-                     <label>
-                     <input type="checkbox" checked="checked" name="remember"> Remember me
-                     </label>
-                  </div>
-                  <div class="container" style="background-color:#f1f1f1">
-                     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                     <span class="psw">Forgot <a href="#">password?</a></span>
-                  </div>
-               </form>
-             </div>
-             
-             <script>
-             var modal = document.getElementById('id01');
-             window.onclick = function(event) {
-               if (event.target == modal) {
-                 modal.style.display = "none";
-               }
-             }
-             </script>
-       
-           </div>
-        </nav>
-     </header>
+                    <script>
+                        var modal = document.getElementById("id01");
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        };
+                    </script>
+                </div>
+            </nav>
+        </header>
 
-    <div class="seperating-bar"></div>
+        <div class="seperating-bar"></div>
 
-</body>
+        <section class="wrapper p-top">
+            <div class="text-center">
+                <h5>Our Menu's</h5>
+                <h2>Popular Picks</h2>
+            </div>
+            <div class="menu-list text-center flex mt-4 gap-3">
+                <div class="order-card">
+                    <div class="card-image">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage" />
+                    </div>
+                    <h4>Food item name</h4>
+                    <h4 class="price">$00.00</h4>
+                    <a href="#" class="btn">Add to cart</a>
+                </div>
+                <div class="order-card">
+                    <div class="card-image">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage" />
+                    </div>
+                    <h4>Food item name</h4>
+                    <h4 class="price">$00.00</h4>
+                    <a href="#" class="btn">Add to cart</a>
+                </div>
+                <div class="order-card">
+                    <div class="card-image">
+                        <img src="/static/images/placeholder.svg" alt="Placeholder Image" class="picksimage" />
+                    </div>
+                    <h4>Food item name</h4>
+                    <h4 class="price">$00.00</h4>
+                    <a href="#" class="btn">Add to cart</a>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
-
