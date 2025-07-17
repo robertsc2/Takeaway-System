@@ -473,3 +473,134 @@ footer .social-links {
 .about-content .btn {
   margin-top: 1rem;
 }
+
+/* ========== TEAM SECTION ========== */
+.team-section {
+  padding: 4rem 0;
+  background: var(--cream2);
+}
+.team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+}
+.team-member {
+  background: var(--pure-white);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(75, 59, 43, 0.08);
+}
+.team-member:hover {
+  box-shadow: 0 4px 16px rgba(75, 59, 43, 0.16);
+}
+.team-member img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.team-member h3 {
+  font-size: 1.5rem;
+  color: var(--lead2);
+  margin-bottom: 0.5rem;
+}
+.team-member p {
+  font-size: 1rem;
+  color: var(--lead);
+  margin-bottom: 1rem;
+}
+.team-member .btn {
+  background: var(--rustic2);
+  color: var(--pure-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+
+/* ========== MENU ITEMS SECTION ========== */
+
+.menu-items {
+  padding: 4rem 0;
+  background: var(--tan-hint);
+}
+.menu-items h2 {
+  font-size: 2.5rem;
+  color: var(--lead2);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+.menu-item {
+  background: var(--pure-white);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  flex: 1 1 250px;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(75, 59, 43, 0.08);
+}
+.menu-item:hover {
+  box-shadow: 0 4px 16px rgba(75, 59, 43, 0.16);
+}
+.menu-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.menu-item h3 {
+  font-size: 1.5rem;
+  color: var(--lead2);
+  margin-bottom: 0.5rem;
+}
+.menu-item p {
+  font-size: 1rem;
+  color: var(--lead);
+  margin-bottom: 1rem;
+}
+.menu-item .price {
+  font-size: 1.2rem;
+  color: var(--rustic2);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+
+
+
+
+/* ========== FOOTER LINKS ========== */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.footer-links a {
+  color: var(--lead2);
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--rustic2);
+}
+/* ========== MEDIA QUERIES ========== */
+
+
+
+
+
+
+
