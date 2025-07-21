@@ -28,35 +28,41 @@
                 </ul>
                 <div class="desktop-action flex gap-2">
                     <a href="#" class="cart-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-value">0</span>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-value">0</span>
                     </a>
                     <!-- W3 Schools login button -->
                     <!-- Button to open the modal login form -->
                     <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
-                    Sign In &nbsp;
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Sign In &nbsp;
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     </button>
+
                     <div id="id01" class="modal">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                        <form class="modal-content animate" action="/action_page.php">
-                            <div class="imgcontainer">
-                                <img src="img_avatar2.png" alt="Avatar" class="avatar" />
-                            </div>
-                            <div class="container">
-                                <label for="uname"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" required />
-                                <label for="psw"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" required />
-                                <button type="submit">Login</button>
-                                <label> <input type="checkbox" checked="checked" name="remember" /> Remember me </label>
-                            </div>
-                            <div class="container" style="background-color: #f1f1f1;">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                <span class="psw">Forgot <a href="#">password?</a></span>
-                            </div>
-                        </form>
-                    </div>
+  <div class="modal-content animate">
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div class="imgcontainer">
+      <img src="/static/images/placeholder.svg" alt="Avatar" class="avatar" />
+    </div>
+    <form class="modal-form" action="/action_page.php">
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="uname" required />
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
+        <button type="submit" class="btn">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember" /> Remember me
+        </label>
+      </div>
+      <div class="container modal-footer">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+</div>
+
                     <script>
                         var modal = document.getElementById("id01");
                         window.onclick = function (event) {
@@ -69,6 +75,8 @@
             </nav>
         </header>
         <div class="seperating-bar"></div>
+
+        <!-- Popular Picks-->
         <section class="wrapper p-top">
             <div class="text-center">
                 <h5>Our Menu's</h5>
@@ -101,37 +109,44 @@
                 </div>
             </div>
         </section>
+
         <div class="seperating-bar-3"></div>
 
-        <!-- Footer Section -->
-        <footer>
-            <div class="wrapper">
-                <div class="footer-content">
-                    <p>&copy; 2025 Oingo Boingo Brothers. All rights reserved.</p>
-                    <ul class="social-links flex gap-2">
-                        <li>
-                            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        </li>
-                    </ul>
+        <!-- Main Menu Section -->
+        <section class="main-menu wrapper p-top">
+            <div class="text-center">
+                <h5>Explore Our Menu</h5>
+                <h2>Main Menu</h2>
+            </div>
+
+            <!-- Category 1 -->
+            <div class="menu-category">
+                <h3>Burgers</h3>
+                <div class="menu-items flex gap-3">
+                    <div class="menu-item">
+                        <img src="/static/Burgers/Mathewburger.png" alt="Appetizer 1" class="menu-image" />
+                        <h4>Mathew Burger</h4>
+                        <h4 class="price">$5.99</h4>
+                        <a href="#" class="btn">Add to cart</a>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/images/placeholder.svg" alt="Appetizer 2" class="menu-image" />
+                        <h4>Garlic Bread</h4>
+                        <h4 class="price">$4.99</h4>
+                        <a href="#" class="btn">Add to cart</a>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/images/placeholder.svg" alt="Appetizer 3" class="menu-image" />
+                        <h4>Bruschetta</h4>
+                        <h4 class="price">$6.99</h4>
+                        <a href="#" class="btn">Add to cart</a>
+                    </div>
+                    <div class="menu-item">
+                        <img src="/static/images/placeholder.svg" alt="Appetizer 4" class="menu-image" />
+                        <h4>Stuffed Mushrooms</h4>
+                        <h4 class="price">$7.99</h4>
+                        <a href="#" class="btn">Add to cart</a>
+                    </div>
                 </div>
             </div>
-        </footer>
-        <div class="cartTab" id="cartTab">
-            <h1>Shopping Cart</h1>
-            <div class="listcart">
-                <!-- dynamically added cart items -->
-            </div>
-            <div class="btn">
-                <button id="closeCart">CLOSE</button>
-                <button id="checkoutBtn">CHECKOUT</button>
-            </div>
-        </div>
-        <script src="/static/javascript.js"> </script>
-    </body>
-</html>
+            <div class="seperating
