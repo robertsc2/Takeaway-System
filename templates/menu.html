@@ -28,16 +28,15 @@
                 </ul>
                 <div class="desktop-action flex gap-2">
                     <a href="#" class="cart-icon">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-value">0</span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-value">0</span>
                     </a>
                     <!-- W3 Schools login button -->
                     <!-- Button to open the modal login form -->
                     <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
-                        Sign In &nbsp;
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Sign In &nbsp;
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     </button>
-
                     <div id="id01" class="modal">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                         <form class="modal-content animate" action="/action_page.php">
@@ -58,7 +57,6 @@
                             </div>
                         </form>
                     </div>
-
                     <script>
                         var modal = document.getElementById("id01");
                         window.onclick = function (event) {
@@ -70,9 +68,7 @@
                 </div>
             </nav>
         </header>
-
         <div class="seperating-bar"></div>
-
         <section class="wrapper p-top">
             <div class="text-center">
                 <h5>Our Menu's</h5>
@@ -106,34 +102,6 @@
             </div>
         </section>
         <div class="seperating-bar-3"></div>
-         
-
-
-
-
-
-
-
-
-
-
-
-
-        https://www.youtube.com/watch?v=gXWohFYrI0M
-        JS Cart Tutorial
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- Footer Section -->
         <footer>
@@ -154,6 +122,16 @@
                 </div>
             </div>
         </footer>
+        <div class="cartTab" id="cartTab">
+            <h1>Shopping Cart</h1>
+            <div class="listcart">
+                <!-- dynamically added cart items -->
+            </div>
+            <div class="btn">
+                <button id="closeCart">CLOSE</button>
+                <button id="checkoutBtn">CHECKOUT</button>
+            </div>
+        </div>
+        <script src="/static/javascript.js"> </script>
     </body>
 </html>
-
