@@ -19,6 +19,23 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
+@app.route('/checkout', methods=['POST'])
+def checkout():
+    data = request.get_json()
 
+    # Process the order (e.g., save to database)
+    items = data.get('items', [])
+    total = data.get('total', 0)
+
+    # Example: Print order details to the console
+    print('Order received:')
+    print('Items:', items)
+    print('Total:', total)
+
+    # Return a success response
+    return jsonify({'message': 'Order processed successfully!'}), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
