@@ -1,11 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
-
+    return render_template("index.html")  
 
 @app.route('/menu')
 def menu():
@@ -15,19 +16,15 @@ def menu():
 def about():
     return render_template('about.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-@app.route('/checkout', methods=['POST'])
+@app.route('/checkout', methods=['POST'])  
 def checkout():
     data = request.get_json()
 
-    # Process the order (e.g., save to database)
-    items = data.get('items', [])
+    # Process the order 
+    items = data.get('items', [])  
     total = data.get('total', 0)
 
-    # Example: Print order details to the console
+    #Print order details to the console
     print('Order received:')
     print('Items:', items)
     print('Total:', total)
@@ -37,5 +34,3 @@ def checkout():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
