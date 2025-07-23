@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         updateCart();
+        // Open the cart sidebar when an item is added
+        cartTab.classList.add('active');
+        cartTab.style.display = 'block';
     }
 
     function updateCart() {
