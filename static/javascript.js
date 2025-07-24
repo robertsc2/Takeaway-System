@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-
+/* Thingy when the payment button is clicked 
     document.getElementById('checkoutBtn').addEventListener('click', async function() {
         const checkoutData = cart.map(item => ({
             name: item.name,
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error during checkout:', error);
             alert('An error occurred. Please try again.');
         }
-    });
+    }); */
 
     function addToCart(product) {
         const found = cart.find(i => i.name === product.name);

@@ -731,6 +731,114 @@ footer .social-links {
   flex: 1; 
 }
 
+/* ========== Payment ========== */
 
+/* Payment Page Specific Styles */
+.payment-page {
+  background: var(--cream);
+  color: var(--lead);
+}
 
+.payment-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 25px;
+}
 
+.payment-form {
+  width: 700px;
+  padding: 20px;
+  background: var(--pure-white);
+  box-shadow: 5px 5px 30px rgba(75, 59, 43, 0.08);
+  border-radius: 12px;
+}
+
+.payment-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.payment-col {
+  flex: 1 1 250px;
+}
+
+.payment-title {
+  font-size: 20px;
+  color: var(--rustic2);
+  padding-bottom: 5px;
+}
+
+.payment-inputBox {
+  margin: 15px 0;
+}
+
+.payment-inputBox label {
+  margin-bottom: 10px;
+  display: block;
+  color: var(--lead2);
+}
+
+.payment-inputBox input,
+.payment-inputBox select {
+  width: 100%;
+  border: 1px solid var(--tan-hint);
+  padding: 10px 15px;
+  font-size: 15px;
+  background: var(--cream2);
+  color: var(--lead2);
+  border-radius: 6px;
+}
+
+.payment-inputBox input:focus,
+.payment-inputBox select:focus {
+  border: 1.5px solid var(--rustic2);
+  background: var(--pure-white);
+}
+
+.payment-flex {
+  display: flex;
+  gap: 15px;
+}
+
+.payment-flex .payment-inputBox {
+  flex: 1 1;
+  margin-top: 5px;
+}
+
+.payment-inputBox img {
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 2px var(--lead));
+}
+
+.payment-submit_btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 17px;
+  background: var(--lead2);
+  color: var(--pure-white);
+  margin-top: 5px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(58, 47, 34, 0.08);
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.payment-submit_btn:hover {
+  background: var(--rustic2);
+}
+
+/* Hide number input spinners */
+.payment-inputBox input[type="number"]::-webkit-inner-spin-button,
+.payment-inputBox input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.payment-inputBox input[type="number"] {
+  -moz-appearance: textfield;
+}
