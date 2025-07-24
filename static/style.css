@@ -706,9 +706,31 @@ footer .social-links {
 }
 
 
+.cartbtn:hover {
+  background: var(--lead);
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  gap: 1rem; 
+}
+
+.cartbtn {
+  font-size: 1.5rem;
+  color: var(--lead2);
+  cursor: pointer;
+  background: none;
+  display: inline-block;
+  padding: 1rem;
+  background: var(--rustic2);
+  width: 150px;
+  text-align: center;
+  margin: 0; 
+  flex: 1; 
+}
 
 
-
-  
 
 
