@@ -1,0 +1,12 @@
+to do:
+
+
+
+
+
+fix styling on menu items, and fix popular picks page
+add cart scrolling and a fixed order total amount that will overlay ontop of the cart items
+fix quantity amount being wierd and cutting off
+finish payment page and link it to the javascript to send order details to console
+{optional}
+finish signup and store login details in a database

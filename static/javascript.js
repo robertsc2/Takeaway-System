@@ -72,31 +72,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 qty: 1
             });
         }
-        updateCart();
+        updateCart(); // Call the function to update the cart display and values.
+
         // Open the cart sidebar when an item is added
-        cartTab.classList.add('active');
-        cartTab.style.display = 'block';
+        cartTab.classList.add('active'); // Add the 'active' class to the cart sidebar to make it visible.
+        cartTab.style.display = 'block'; // Ensure the cart sidebar is displayed.
     }
 
+    // Function to update the cart display and values
     function updateCart() {
+        // Update the cart value (total quantity of items in the cart)
         cartValue.innerText = cart.reduce((sum, i) => sum + i.qty, 0);
+
+        // Clear the current cart items in the cart display
         listcart.innerHTML = '';
+
+        // Loop through each item in the cart and create its HTML structure
         cart.forEach((item, idx) => {
-            const div = document.createElement('div');
-            div.className = 'cart-item';
+            const div = document.createElement('div'); // Create a new div for the cart item
+            div.className = 'cart-item'; // Add a class to the div for styling
             div.innerHTML = `
-                <span>${item.name}</span>
-                <span>$${item.price.toFixed(2)}</span>
-                <input type="number" min="1" value="${item.qty}" style="width:40px;" data-idx="${idx}" />
-                <button data-idx="${idx}" class="removeBtn">Remove</button>
+                <span>${item.name}</span> <!-- Display the item name -->
+                <span>$${item.price.toFixed(2)}</span> <!-- Display the item price -->
+                <input type="number" min="1" value="${item.qty}" style="width:40px;" data-idx="${idx}" /> <!-- Input field to update quantity -->
+                <button data-idx="${idx}" class="removeBtn">Remove</button> <!-- Button to remove the item -->
             `;
-            listcart.appendChild(div);
+            listcart.appendChild(div); // Append the created div to the cart display
         });
 
-        // Update total price
+        // Calculate the total price of items in the cart
         const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+        // Update the total price display if the cartTotal element exists
         if (cartTotal) {
-            cartTotal.innerText = total.toFixed(2);
+            cartTotal.innerText = total.toFixed(2); // Set the total price with two decimal places
         }
     }
 

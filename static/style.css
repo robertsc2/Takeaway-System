@@ -36,6 +36,7 @@ a {
   font-size: 1.1rem;
   text-decoration: none;
   color: var(--lead);
+  cursor: pointer;
 }
 
 li {
@@ -333,6 +334,48 @@ p {
 .hero-image-container {
   flex: 1;
   flex-basis: 300px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+.hero-content h1 {
+  font-size: 3.5rem;
+  color: var(--lead2);
+  margin-bottom: 1rem;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--lead);
+  margin-bottom: 1.5rem;
+}
+.hero-content .btn {
+  background: var(--rustic2);
+  color: var(--pure-white);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+.hero-content .btn:hover {
+  background: var(--lead2);
+}
+.hero-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.hero-image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(75, 59, 43, 0.16);
 }
 
 
@@ -962,4 +1005,89 @@ footer .social-links {
 }
 .payment-inputBox input[type="number"] {
   -moz-appearance: textfield;
+}
+
+/* Storefront img styling */
+
+.storefront {
+  width: 100%;
+  max-width: 1200px; 
+  height: auto; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  margin: 20px auto; 
+  display: block; 
+}
+
+/* ========== POPULAR PICKS SECTION ========== */
+.wrapper.p-top {
+  padding: 2rem 1rem;
+}
+
+.wrapper.p-top .text-center h5 {
+  font-size: 1.2rem;
+  color: var(--rustic2);
+  margin-bottom: 0.5rem;
+}
+
+.wrapper.p-top .text-center h2 {
+  font-size: 2rem;
+  color: var(--lead);
+  margin-bottom: 1.5rem;
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 1.5rem; /* Space between cards */
+  justify-content: center;
+  align-items: start;
+}
+
+.order-card {
+  background: var(--pure-white); /* Card background */
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.order-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-image img {
+  width: 100%;
+  max-width: 200px; /* Limit image size */
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.order-card h4 {
+  font-size: 1.2rem;
+  color: var(--lead);
+  margin: 0.5rem 0;
+}
+
+.order-card .price {
+  font-size: 1.1rem;
+  color: var(--rustic);
+  margin-bottom: 1rem;
+}
+
+.order-card .btn {
+  background: var(--rustic2);
+  color: var(--pure-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.order-card .btn:hover {
+  background: var(--lead2);
 }
