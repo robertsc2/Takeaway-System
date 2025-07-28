@@ -4,22 +4,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartValue = document.querySelector('.cart-value');
     const listcart = document.querySelector('.listcart');
     const cartTotal = document.getElementById('cartTotal');     
+    
     // Add to cart 
-    document.querySelectorAll('.menu-item .btn').forEach((btn, idx) => {
+    document.querySelectorAll('.menu-item .btn, .order-card .btn').forEach((btn, idx) => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
-            const item = btn.closest('.menu-item');
-            const name = item.querySelector('h4')
-                .innerText;
-            const price = parseFloat(item.querySelector(
-                '.price').innerText.replace('$',
-                ''));
+            const item = btn.closest('.menu-item, .order-card');
+            const name = item.querySelector('h4').innerText;
+            const price = parseFloat(item.querySelector('.price').innerText.replace('$', ''));
             addToCart({
                 name,
                 price
             });
         });
     });
+
+
+
+
+
 /* Thingy when the payment button is clicked 
     document.getElementById('checkoutBtn').addEventListener('click', async function() {
         const checkoutData = cart.map(item => ({

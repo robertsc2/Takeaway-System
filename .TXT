@@ -4,9 +4,84 @@ to do:
 
 
 
-fix styling on menu items, and fix popular picks page
+fix styling on menu items, and fix popular picks page 
 add cart scrolling and a fixed order total amount that will overlay ontop of the cart items
 fix quantity amount being wierd and cutting off
 finish payment page and link it to the javascript to send order details to console
 {optional}
 finish signup and store login details in a database
+
+
+
+
+SHOPPING CART IMPROVEMENTS TO BE FINISHED
+
+Fixed color:
+----------------------------------------
+.cartbtn {
+  font-size: 1.5rem;
+  color: var(--pure-white);
+  cursor: pointer;
+  background: var(--rustic2);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 48%;
+  text-align: center;
+  margin: 0;
+  flex: 1;
+  transition: background 0.2s;
+}
+
+
+
+.cartbtn {
+  font-size: 1.5rem;
+  color: var(--lead2);
+  cursor: pointer;
+  background: var(--rustic2);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 48%;
+  text-align: center;
+  margin: 0;
+  flex: 1;
+  transition: background 0.2s;
+}
+----------------------------------------
+
+
+Fixed order total styling & position 
+----------------------------------------
+Added seperating bar
+
+ <div class="cartTab" id="cartTab">
+        <h1>Shopping Cart</h1>
+        <hr class="cart-divider" />
+        <div class="listcart"></div>
+        <div class="seperating-bar-5"></div>
+        <div class="cart-total">
+            Total: $<span id="cartTotal">0.00</span>
+        </div>
+        <div class="seperating-bar-5"></div>
+        <div class="cart-buttons">
+            <a id="closeCart" class="cartbtn">CLOSE</a>
+            <a href="/payment" id="checkoutBtn" class="cartbtn">CHECKOUT</a>
+        </div>
+    </div>
+
+.seperating-bar-5 {
+  width: 100%;
+  height: 2px;
+  background: var(--rustic2);
+}
+
+
+
+
+
+
+
+----------------------------------------
+
