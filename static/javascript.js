@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartTab = document.getElementById('cartTab');
     const cartValue = document.querySelector('.cart-value');
     const listcart = document.querySelector('.listcart');
-
+    const cartTotal = document.getElementById('cartTotal');     
     // Add to cart 
     document.querySelectorAll('.menu-item .btn').forEach((btn, idx) => {
         btn.addEventListener('click', function(e) {
@@ -92,6 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             listcart.appendChild(div);
         });
+
+        // Update total price
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        if (cartTotal) {
+            cartTotal.innerText = total.toFixed(2);
+        }
     }
 
     // Quantity change
