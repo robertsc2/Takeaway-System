@@ -837,40 +837,43 @@ footer .social-links {
   color: var(--pure-white);
 }
 
-/* Total price just above the buttons, always visible */
+
 .cart-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.25rem;
-  font-weight: bold;
-  padding: 1.2rem 1.5rem 1.2rem 1.5rem;
-  border-top: 1px solid #e0d9cd;
-  border-bottom: 1px solid #e0d9cd;
+  position: absolute; 
+  bottom: 4rem; 
+  left: 0;
+  width: 100%;
   background: var(--pure-white);
-  color: var(--lead2);
-  letter-spacing: 0.5px;
-  margin-bottom: 0;
-  box-shadow: 0 1px 4px rgba(75, 59, 43, 0.04);
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e0d9cd;
+  border-bottom: 4px solid var(--rustic2);
+  z-index: 11;
+  text-align: center; 
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 400  ;
+  
 }
 
 .cart-total span {
   color: var(--rustic2);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin-left: 0.5rem;
+  font-weight: 400  ;
+  
 }
 
 /* Fixed buttons at the bottom */
 .cart-buttons {
   position: absolute;
-  bottom: 0;
+  bottom: 0rem;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: var(--cream2);
+  background: var(--pure-white);
   border-top: 1.5px solid #e0d9cd;
   z-index: 10;
 }
@@ -1097,5 +1100,3 @@ footer .social-links {
 .order-card .btn:hover {
   background: var(--lead2);
 }
-
-

@@ -1,10 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let cart = [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Load cart from localStorage or initialize as empty
     const cartTab = document.getElementById('cartTab');
     const cartValue = document.querySelector('.cart-value');
     const listcart = document.querySelector('.listcart');
-    const cartTotal = document.getElementById('cartTotal');     
-    
+    const cartTotal = document.getElementById('cartTotal');
+
+    // Function to save cart to localStorage
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // Function to update cart UI
+    function updateCartUI() {
+        cartValue.innerText = cart.length;
+        const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+        cartTotal.innerText = `$${total.toFixed(2)}`;
+    }
+
+    // Call updateCartUI on page load to reflect saved cart
+    updateCartUI();
+    updateCart(); // Initial update of the cart display and values
+
     // Add to cart 
     document.querySelectorAll('.menu-item .btn, .order-card .btn').forEach((btn, idx) => {
         btn.addEventListener('click', function(e) {
@@ -19,52 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
-
-
-
-/* Thingy when the payment button is clicked 
-    document.getElementById('checkoutBtn').addEventListener('click', async function() {
-        const checkoutData = cart.map(item => ({
-            name: item.name,
-            price: item.price,
-            quantity: item.qty
-        }));
-        const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-
-        try {
-            // Send data to Flask backend
-            const response = await fetch('/checkout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    items: checkoutData,
-                    total: totalAmount
-                })
-            });
-
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Order processed successfully:', result);
-
-                // Clear the cart
-                cart = [];
-                updateCart();
-
-                // Show success feedback
-                alert('Checkout successful! Your order has been placed.');
-            } else {
-                console.error('Failed to process order:', response.statusText);
-                alert('Checkout failed. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error during checkout:', error);
-            alert('An error occurred. Please try again.');
-        }
-    }); */
-
     function addToCart(product) {
         const found = cart.find(i => i.name === product.name);
         if (found) {
@@ -75,11 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 qty: 1
             });
         }
-        updateCart(); // Call the function to update the cart display and values.
+        updateCart(); // update the cart display and valuS
 
         // Open the cart sidebar when an item is added
-        cartTab.classList.add('active'); // Add the 'active' class to the cart sidebar to make it visible.
-        cartTab.style.display = 'block'; // Ensure the cart sidebar is displayed.
+        cartTab.classList.add('active'); 
+        cartTab.style.display = 'block'; 
+
+        saveCart(); // Save cart to localStorage
+        updateCartUI(); // Update UI
     }
 
     // Function to update the cart display and values
@@ -116,9 +89,10 @@ document.addEventListener('DOMContentLoaded', function() {
     listcart.addEventListener('input', function(e) {
         if (e.target.type === 'number') {
             const idx = e.target.getAttribute('data-idx');
-            cart[idx].qty = Math.max(1, parseInt(e.target
-                .value));
+            cart[idx].qty = Math.max(1, parseInt(e.target.value));
             updateCart();
+            saveCart(); // Save cart to localStorage
+            updateCartUI(); // Update UI
         }
     });
 
@@ -128,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const idx = e.target.getAttribute('data-idx');
             cart.splice(idx, 1);
             updateCart();
+            saveCart(); // Save cart to localStorage
+            updateCartUI(); // Update UI
         }
     });
 
@@ -137,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             cartTab.classList.add('active');
             cartTab.style.display = 'block';
+            
         });
     document.getElementById('closeCart').addEventListener('click',
         function() {
