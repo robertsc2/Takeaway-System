@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Load cart from localStorage or initialize as empty
+    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Initialize cart from localStorage or empty array
     const cartTab = document.getElementById('cartTab');
     const cartValue = document.querySelector('.cart-value');
     const listcart = document.querySelector('.listcart');
@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateCartUI() {
         cartValue.innerText = cart.length;
         const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-        cartTotal.innerText = `$${total.toFixed(2)}`;
+        if (cartTotal) {
+            cartTotal.innerText = total.toFixed(2);
+        }
     }
 
     // Call updateCartUI on page load to reflect saved cart
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 qty: 1
             });
         }
-        updateCart(); // update the cart display and valuS
+        updateCart(); // update the cart display and values
 
         // Open the cart sidebar when an item is added
         cartTab.classList.add('active'); 
@@ -121,11 +123,56 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTab.style.display = 'none';
         });
 
+    // CHECKOUT BUTTON HANDLER - MOVED INSIDE DOMContentLoaded
+    // Check if checkout button exists (only on menu page)
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Calculate the total from the cart
+            const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            
+            console.log('Sending cart data:', { items: cart, total: total }); // Debug log
+            
+            // Send cart data to Flask
+            fetch('/checkout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    items: cart,
+                    total: total
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server response:', data); // Debug log
+                if (data.redirect_url) {
+                    // Redirect to payment page
+                    window.location.href = data.redirect_url;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error processing your order. Please try again.');
+            });
+        });
+    }
+
     // Modal close for login
     var modal = document.getElementById('id01');
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    if (modal) {
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     }
 });
+
+
+
+
+
