@@ -28,10 +28,9 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="cart-value">0</span>
                 </a>
-                <!-- W3 Schools login button -->
-                <!-- Button to open the modal login form -->
+                <!-- Button to open the modal order details form -->
                 <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
-                    Sign In &nbsp;
+                    Enter Order Details &nbsp;
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
 
@@ -41,20 +40,18 @@
                         <div class="imgcontainer">
                             <img src="/static/images/placeholder.svg" alt="Avatar" class="avatar" />
                         </div>
-                        <form class="modal-form" action="/action_page.php">
+                        <form class="modal-form" id="orderDetailsForm">
                             <div class="container">
-                                <label for="uname"><b>Username</b></label>
-                                <input type="text" placeholder="Enter Username" name="uname" id="uname" required />
-                                <label for="psw"><b>Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
-                                <button type="submit" class="btn">Login</button>
-                                <label>
-                                    <input type="checkbox" checked="checked" name="remember" /> Remember me
-                                </label>
+                                <label for="orderName"><b>Order Name</b></label>
+                                <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required />
+                                <label for="orderAddress"><b>Address</b></label>
+                                <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required />
+                                <label for="orderPhone"><b>Phone Number</b></label>
+                                <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required />
+                                <button type="submit" class="btn">Save Details</button>
                             </div>
                             <div class="container modal-footer">
                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
-                                <span class="psw">Forgot <a href="#">password?</a></span>
                             </div>
                         </form>
                     </div>
@@ -171,67 +168,6 @@
             </div>
         </div>
 
-        <!-- Category 3 Pizza -->
-        <div class="menu-category">
-            <div class="menu-items flex gap-3">
-                <div class="menu-item">
-                    <img src="/static/food/Cheese Pizza.png" alt="Cheese Pizza"  />
-                    <h4>Cheese Pizza</h4>
-                    <h4 class="price">$11.00</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-                <div class="menu-item">
-                    <img src="/static/food/Hawaiian Pizza.png" alt=""  />
-                    <h4>Hawaiian Pizza</h4>
-                    <h4 class="price">$14.00</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-                <div class="menu-item">
-                    <img src="/static/food/Meat Lovers Pizza.png" alt=""  />
-                    <h4>Meat Lovers</h4>
-                    <h4 class="price">$13.00</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-                <div class="menu-item">
-                    <img src="/static/food/Pepperoni Pizza.png" alt=""  />
-                    <h4>Peperoni Pizza</h4>
-                    <h4 class="price">$12.00</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Category 4 Drinks-->
-
-        <div class="menu-category">
-            <div class="menu-items flex gap-3">
-                <div class="menu-item">
-                    <img src="/static/food/coke.png" alt="Coke Can"  />
-                    <h4>Coke Can</h4>
-                    <h4 class="price">$3.50</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-                <div class="menu-item">
-                    <img src="/static/food/fanta.png" alt="Fanta Can"  />
-                    <h4>Fanta Can</h4>
-                    <h4 class="price">$3.50</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-                <div class="menu-item">
-                    <img src="/static/food/l&p.png" alt="L&P Can"  />
-                    <h4>L&P Can</h4>
-                    <h4 class="price">$3.50</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-                <div class="menu-item">
-                    <img src="/static/food/sprite.jpg" alt="Sprite"  />
-                    <h4>Sprite</h4>
-                    <h4 class="price">$4.50</h4>
-                    <a class="btn">Add to cart</a>
-                </div>
-            </div>
-        </div>
 
 
 

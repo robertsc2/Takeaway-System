@@ -123,19 +123,21 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTab.style.display = 'none';
         });
 
-    // CHECKOUT BUTTON HANDLER - MOVED INSIDE DOMContentLoaded
-    // Check if checkout button exists (only on menu page)
+    // FIXED CHECKOUT BUTTON HANDLER
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent the default link behavior
             
-            // Calculate the total from the cart
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            // Calculate total
             const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
             
-            console.log('Sending cart data:', { items: cart, total: total }); // Debug log
-            
-            // Send cart data to Flask
+            // Send cart data to server
             fetch('/checkout', {
                 method: 'POST',
                 headers: {
@@ -143,20 +145,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     items: cart,
-                    total: total
+                    total: total.toFixed(2)
                 })
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Server response:', data); // Debug log
                 if (data.redirect_url) {
                     // Redirect to payment page
                     window.location.href = data.redirect_url;
+                } else {
+                    alert('Error processing checkout');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('There was an error processing your order. Please try again.');
+                alert('Error processing checkout');
             });
         });
     }
@@ -170,9 +173,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    // Save order details from modal to localStorage
+    const orderDetailsForm = document.getElementById('orderDetailsForm');
+    if (orderDetailsForm) {
+        orderDetailsForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const orderName = document.getElementById('orderName').value;
+            const orderAddress = document.getElementById('orderAddress').value;
+            const orderPhone = document.getElementById('orderPhone').value;
+            // Save to localStorage
+            localStorage.setItem('orderDetails', JSON.stringify({
+                orderName,
+                orderAddress,
+                orderPhone
+            }));
+            document.getElementById('id01').style.display = 'none';
+            alert('Order details saved!');
+        });
+    }
 });
-
-
-
-
-

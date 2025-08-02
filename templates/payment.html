@@ -6,6 +6,7 @@
         <title>Online Payment-Page</title>
         <link rel="stylesheet" href="/static/style.css" />
     </head>
+    
     <body class="payment-page">
         <div class="payment-container">
             <form class="payment-form" action="#">
@@ -25,8 +26,8 @@
                                 <input type="text" id="state" placeholder="Enter Address" required />
                             </div>
                             <div class="payment-inputBox">
-                                <label for="zip">Zip Code:</label>
-                                <input type="number" id="zip" placeholder="123 456" required />
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" placeholder="Enter Phone Number" required />
                             </div>
                         </div>
 
@@ -68,9 +69,10 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit" value="Proceed to Checkout" class="payment-submit_btn" id="paymentfinbtn" />
+                <input type="submit" value="Finish Payment" class="payment-submit_btn" id="paymentfinbtn" />
             </form>
         </div>
         <script type="text/javascript" src="index.js"></script>
+        <script src="/static/payment.js"></script>
     </body> 
 </html>

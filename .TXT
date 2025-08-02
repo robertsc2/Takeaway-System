@@ -14,7 +14,7 @@ finish signup and store login details in a database
 add cart saving across pages < -- Done
 
 
-Change signin to be an order DETAIL button
+Change signin to be an order DETAIL button <-- done
 add payment validation, then once the order has been payed for, save the users name from order details, save the order and username and ph# into a database
 change procced with checkout to proceed to payment
 

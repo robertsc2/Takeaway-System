@@ -13,63 +13,50 @@
    </head>
    <body>
       <!-- Header Section -->
-      <header>
-         <nav class="navbar flex between wrapper">
-             <a href="/" class="logo">Oingo Boingo Brothers</a>
-             <ul class="nav-links flex gap-3">
-                 <li><a href="/">Home</a></li>
-                 <li><a href="/menu">Menu</a></li>
-                 <li><a href="/about">About</a></li>
-                 <li><a href="/#store-info">Contact</a></li>
-             </ul>
-             <div class="desktop-action flex gap-2">
-                 <a href="#" class="cart-icon">
-                     <i class="fa-solid fa-cart-shopping"></i>
-                     <span class="cart-value">0</span>
-                 </a>
-                 <!-- W3 Schools login button -->
-                 <!-- Button to open the modal login form -->
-                 <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
-                     Sign In &nbsp;
-                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                 </button>
+          <header>
+        <nav class="navbar flex between wrapper">
+            <a href="/" class="logo">Oingo Boingo Brothers</a>
+            <ul class="nav-links flex gap-3">
+                <li><a href="/">Home</a></li>
+                <li><a href="/menu">Menu</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/#store-info">Contact</a></li>
+            </ul>
+            <div class="desktop-action flex gap-2">
+                <a class="cart-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-value">0</span>
+                </a>
+                <!-- Button to open the modal order details form -->
+                <button onclick="document.getElementById('id01').style.display='block'" class="signin btn">
+                    Enter Order Details &nbsp;
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </button>
 
-                 <div id="id01" class="modal">
-<div class="modal-content animate">
- <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
- <div class="imgcontainer">
-   <img src="/static/images/placeholder.svg" alt="Avatar" class="avatar" />
- </div>
- <form class="modal-form" action="/action_page.php">
-   <div class="container">
-     <label for="uname"><b>Username</b></label>
-     <input type="text" placeholder="Enter Username" name="uname" id="uname" required />
-     <label for="psw"><b>Password</b></label>
-     <input type="password" placeholder="Enter Password" name="psw" id="psw" required />
-     <button type="submit" class="btn">Login</button>
-     <label>
-       <input type="checkbox" checked="checked" name="remember" /> Remember me
-     </label>
-   </div>
-   <div class="container modal-footer">
-     <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
-     <span class="psw">Forgot <a href="#">password?</a></span>
-   </div>
- </form>
-</div>
-</div>
+                <div id="id01" class="modal">
+                    <div class="modal-content animate">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="imgcontainer">
+                            <img src="/static/images/placeholder.svg" alt="Avatar" class="avatar" />
+                        </div>
+                        <form class="modal-form" id="orderDetailsForm">
+                            <div class="container">
+                                <label for="orderName"><b>Order Name</b></label>
+                                <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required />
+                                <label for="orderAddress"><b>Address</b></label>
+                                <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required />
+                                <label for="orderPhone"><b>Phone Number</b></label>
+                                <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required />
+                                <button type="submit" class="btn">Save Details</button>
+                            </div>
+                            <div class="container modal-footer">
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-                 <script>
-                     var modal = document.getElementById("id01");
-                     window.onclick = function (event) {
-                         if (event.target == modal) {
-                             modal.style.display = "none";
-                         }
-                     };
-                 </script>
-             </div>
-         </nav>
-     </header>
+    </header>
 
      
       <div class="seperating-bar"></div>

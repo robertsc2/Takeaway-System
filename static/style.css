@@ -1006,16 +1006,6 @@ footer .social-links {
   background: var(--rustic2);
 }
 
-/* Hide number input spinners */
-.payment-inputBox input[type="number"]::-webkit-inner-spin-button,
-.payment-inputBox input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.payment-inputBox input[type="number"] {
-  -moz-appearance: textfield;
-}
-
 /* Storefront img styling */
 
 .storefront {
