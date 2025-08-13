@@ -41,16 +41,16 @@
                     <div class="modal-content animate">
                         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                         <div class="imgcontainer">
-                            <img src="/static/images/placeholder.svg" alt="Avatar" class="avatar" />
+                            <img src="/static/images/pfp.webp" alt="Avatar" class="avatar" />
                         </div>
                         <form class="modal-form" id="orderDetailsForm">
                             <div class="container">
                                 <label for="orderName"><b>Order Name</b></label>
-                                <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required />
+                                <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required pattern="[A-Za-z\s]+" title="Only letters and spaces allowed" />
                                 <label for="orderAddress"><b>Address</b></label>
-                                <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required />
+                                <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed" />
                                 <label for="orderPhone"><b>Phone Number</b></label>
-                                <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required />
+                                <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required pattern="[0-9\s\-]+" title="Only numbers, spaces, and dashes allowed" />
                                 <button type="submit" class="btn">Save Details</button>
                             </div>
                             <div class="container modal-footer">

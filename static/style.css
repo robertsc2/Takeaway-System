@@ -133,6 +133,19 @@ p {
 .signin.btn {
   background: var(--rustic2);
   border: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.signin.btn:hover,
+.signin.btn:focus {
+  background: var(--lead2);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: scale(1.05);
+}
+
+.signin.btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
 
@@ -173,6 +186,7 @@ p {
   line-height: 20px;
 }
 
+/* Remove this broken selector (typo, should be .cart-icon not .card-icon) */
 .card-icon {
   font-size: 72px;     
   color: var(--rustic2); 
@@ -264,7 +278,8 @@ p {
 }
 
 .modal-form input[type="text"],
-.modal-form input[type="password"] {
+.modal-form input[type="password"],
+.modal-form input[type="tel"] {
   padding: 0.7rem;
   border: 1px solid var(--rustic2);
   border-radius: 0.5rem;
@@ -474,6 +489,12 @@ p {
   border: .15rem solid var(--rustic2);
   border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.05) 8px 8px 8px, rgba(0, 0, 0, 0.05) 8px 8px 8px inset;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.order-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .order-card .price {
@@ -575,7 +596,6 @@ footer .social-links {
   padding: 4rem 0;
   background: var(--tan-hint);
 }
-
 .about-wrapper {
   display: flex;
   align-items: center;
@@ -583,7 +603,6 @@ footer .social-links {
   max-width: 1200px;
   margin: auto;
 }
-
 .about-image {
   flex: 1;
   max-width: 500px;
@@ -591,24 +610,20 @@ footer .social-links {
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(75, 59, 43, 0.16);
 }
-
 .about-content {
   flex: 1;
 }
-
 .about-content h2 {
   font-size: 2.5rem;
   color: var(--lead2);
   margin-bottom: 1rem;
 }
-
 .about-content p {
   font-size: 1.2rem;
   color: var(--lead);
   line-height: 1.8rem;
   margin-bottom: 1.5rem;
 }
-
 .about-content .btn {
   margin-top: 1rem;
 }
@@ -714,9 +729,15 @@ footer .social-links {
   margin-bottom: 1rem;
 }
 
-
-
-
+/* Header nav link animation */
+.nav-links a {
+  transition: color 0.2s, transform 0.2s;
+}
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--rustic2);
+  transform: translateY(-2px) scale(1.08);
+}
 
 /* ========== FOOTER LINKS ========== */
 .footer-links {
@@ -1037,29 +1058,29 @@ footer .social-links {
 
 .menu-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
-  gap: 1.5rem; /* Space between cards */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 1.5rem;
   justify-content: center;
   align-items: start;
 }
 
 .order-card {
-  background: var(--pure-white); /* Card background */
+  background: var(--pure-white); 
   border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); 
   padding: 1rem;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .order-card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
+  transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-image img {
   width: 100%;
-  max-width: 200px; /* Limit image size */
+  max-width: 200px; 
   height: auto;
   margin-bottom: 1rem;
   border-radius: 0.5rem;

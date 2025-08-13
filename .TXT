@@ -1,18 +1,16 @@
 
 To do:
 
-- Remove Cheese pizza and sprite from popular Picks to prevent cart overflowing
-- Fix item amount being visually cut off when adding more then 10 items
-- Fix The mathew burger and mathew burger being different things in popular picks and menu items
-- Remove ability to increase with the up&down buttons, should only be able to increase when hitting add to cart or entering a value
+- Fix item amount being visually cut off when adding more then 10 items <--- Done
+- Fix The mathew burger and mathew burger being different things in popular picks and menu items <-- Done
 - Add order details opening when checkout button is clicked IF user hasn't already entered order details.
 - If user has already entered order details, change 'enter order details' to Order details and display the previously enetered details in that popup instead of prompts to enter details (make them changable aswell)
 OR 
-Prompt 'You have already entered your details, would you like to change them?' then let user update details if yes
+Prompt 'You have already entered your details, would you like to change them?' then let user update details if yes <-- dOne
 
 
-- Remove placeholder image in enter order details
-- Format input boxes for order details properly
+- Remove placeholder image in enter order details <-- done
+- Format input boxes for order details properly<-- done
 - remove being able to add numbers to all text boxes, remove being able to add text to all number input boxes
 - Add validation to all input boxes (eg min and max char limit, checking dates)
 

@@ -1,29 +1,112 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || []; // Initialize cart from localStorage or empty array
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartTab = document.getElementById('cartTab');
     const cartValue = document.querySelector('.cart-value');
     const listcart = document.querySelector('.listcart');
     const cartTotal = document.getElementById('cartTotal');
 
-    // Function to save cart to localStorage
+    // Order Details Management
+    let orderDetails = JSON.parse(localStorage.getItem('orderDetails')) || {
+        orderName: '',
+        orderAddress: '',
+        orderPhone: '',
+        isEntered: false
+    };
+
     function saveCart() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    // Function to update cart UI
+    function saveOrderDetails() {
+        localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+    }
+
     function updateCartUI() {
-        cartValue.innerText = cart.length;
+        cartValue.innerText = cart.reduce((sum, i) => sum + i.qty, 0);
         const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
         if (cartTotal) {
             cartTotal.innerText = total.toFixed(2);
         }
     }
 
-    // Call updateCartUI on page load to reflect saved cart
-    updateCartUI();
-    updateCart(); // Initial update of the cart display and values
+    function updateOrderDetailsButton() {
+        const orderDetailsBtn = document.querySelector('.signin.btn');
+        if (!orderDetailsBtn) return;
+        
+        if (orderDetails.isEntered) {
+            orderDetailsBtn.innerHTML = `
+                Order Details &nbsp;
+                <i class="fa-solid fa-check"></i>
+            `;
+            orderDetailsBtn.style.background = 'var(--rustic)';
+        } else {
+            orderDetailsBtn.innerHTML = `
+                Enter Order Details &nbsp;
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            `;
+            orderDetailsBtn.style.background = 'var(--rustic2)';
+        }
+    }
 
-    // Add to cart 
+    function showNotification(message, type = 'info') {
+        const existingNotification = document.querySelector('.notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        
+        const colors = {
+            success: '#4CAF50',
+            error: '#f44336',
+            info: '#2196F3'
+        };
+        
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${colors[type] || colors.info};
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            z-index: 3000;
+            font-size: 1rem;
+            max-width: 300px;
+            animation: slideIn 0.3s ease-out;
+        `;
+        
+        if (!document.querySelector('#notification-styles')) {
+            const style = document.createElement('style');
+            style.id = 'notification-styles';
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideIn 0.3s ease-out reverse';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    updateCartUI();
+    updateCart();
+    updateOrderDetailsButton();
+
     document.querySelectorAll('.menu-item .btn, .order-card .btn').forEach((btn, idx) => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -47,97 +130,87 @@ document.addEventListener('DOMContentLoaded', function() {
                 qty: 1
             });
         }
-        updateCart(); // update the cart display and values
-
-        // Open the cart sidebar when an item is added
+        updateCart();
         cartTab.classList.add('active'); 
         cartTab.style.display = 'block'; 
-
-        saveCart(); // Save cart to localStorage
-        updateCartUI(); // Update UI
+        saveCart();
+        updateCartUI();
     }
 
-    // Function to update the cart display and values
     function updateCart() {
-        // Update the cart value (total quantity of items in the cart)
         cartValue.innerText = cart.reduce((sum, i) => sum + i.qty, 0);
-
-        // Clear the current cart items in the cart display
         listcart.innerHTML = '';
 
-        // Loop through each item in the cart and create its HTML structure
         cart.forEach((item, idx) => {
-            const div = document.createElement('div'); // Create a new div for the cart item
-            div.className = 'cart-item'; // Add a class to the div for styling
+            const div = document.createElement('div');
+            div.className = 'cart-item';
             div.innerHTML = `
-                <span>${item.name}</span> <!-- Display the item name -->
-                <span>$${item.price.toFixed(2)}</span> <!-- Display the item price -->
-                <input type="number" min="1" value="${item.qty}" style="width:40px;" data-idx="${idx}" /> <!-- Input field to update quantity -->
-                <button data-idx="${idx}" class="removeBtn">Remove</button> <!-- Button to remove the item -->
+                <span>${item.name}</span> 
+                <span>$${item.price.toFixed(2)}</span> 
+                <input type="number" min="1" value="${item.qty}" style="width:60px;" data-idx="${idx}" />
+                <button data-idx="${idx}" class="removeBtn">Remove</button>
             `;
-            listcart.appendChild(div); // Append the created div to the cart display
+            listcart.appendChild(div);
         });
 
-        // Calculate the total price of items in the cart
         const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-
-        // Update the total price display if the cartTotal element exists
         if (cartTotal) {
-            cartTotal.innerText = total.toFixed(2); // Set the total price with two decimal places
+            cartTotal.innerText = total.toFixed(2);
         }
     }
 
-    // Quantity change
-    listcart.addEventListener('input', function(e) {
+    listcart.addEventListener('change', function(e) {
         if (e.target.type === 'number') {
-            const idx = e.target.getAttribute('data-idx');
-            cart[idx].qty = Math.max(1, parseInt(e.target.value));
-            updateCart();
-            saveCart(); // Save cart to localStorage
-            updateCartUI(); // Update UI
+            const idx = parseInt(e.target.getAttribute('data-idx'));
+            const newQty = Math.max(1, parseInt(e.target.value) || 1);
+            cart[idx].qty = newQty;
+            updateCartUI();
+            saveCart();
         }
     });
 
-    // Remove item
     listcart.addEventListener('click', function(e) {
         if (e.target.classList.contains('removeBtn')) {
-            const idx = e.target.getAttribute('data-idx');
+            const idx = parseInt(e.target.getAttribute('data-idx'));
             cart.splice(idx, 1);
             updateCart();
-            saveCart(); // Save cart to localStorage
-            updateCartUI(); // Update UI
+            saveCart();
+            updateCartUI();
         }
     });
 
-    // Show/hide cart
     document.querySelector('.cart-icon').addEventListener('click',
         function(e) {
             e.preventDefault();
             cartTab.classList.add('active');
             cartTab.style.display = 'block';
-            
         });
+    
     document.getElementById('closeCart').addEventListener('click',
         function() {
             cartTab.classList.remove('active');
             cartTab.style.display = 'none';
         });
 
-    // FIXED CHECKOUT BUTTON HANDLER
+    // Enhanced checkout button handler
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent the default link behavior
+            e.preventDefault();
             
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                showNotification('Your cart is empty. Please add items before checkout.', 'error');
                 return;
             }
 
-            // Calculate total
+            if (!orderDetails.isEntered) {
+                showNotification('Please enter your order details first.', 'info');
+                document.getElementById('id01').style.display = 'flex';
+                return;
+            }
+
             const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
             
-            // Send cart data to server
             fetch('/checkout', {
                 method: 'POST',
                 headers: {
@@ -145,51 +218,94 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 body: JSON.stringify({
                     items: cart,
-                    total: total.toFixed(2)
+                    total: total.toFixed(2),
+                    orderDetails: orderDetails
                 })
             })
             .then(response => response.json())
             .then(data => {
                 if (data.redirect_url) {
-                    // Redirect to payment page
                     window.location.href = data.redirect_url;
                 } else {
-                    alert('Error processing checkout');
+                    showNotification('Error processing checkout', 'error');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Error processing checkout');
+                showNotification('Error processing checkout', 'error');
             });
         });
     }
 
-    // Modal close for login
-    var modal = document.getElementById('id01');
-    if (modal) {
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+    // Enhanced order details button handler
+    const orderDetailsBtn = document.querySelector('.signin.btn');
+    if (orderDetailsBtn) {
+        orderDetailsBtn.addEventListener('click', function() {
+            const modal = document.getElementById('id01');
+            
+            if (orderDetails.isEntered) {
+                const confirmed = confirm('You have already entered your details. Would you like to change them?');
+                if (!confirmed) {
+                    return;
+                }
+                
+                document.getElementById('orderName').value = orderDetails.orderName;
+                document.getElementById('orderAddress').value = orderDetails.orderAddress;
+                document.getElementById('orderPhone').value = orderDetails.orderPhone;
+                
+                const submitBtn = document.querySelector('#orderDetailsForm .btn[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.textContent = 'Update Details';
+                }
+            } else {
+                document.getElementById('orderName').value = '';
+                document.getElementById('orderAddress').value = '';
+                document.getElementById('orderPhone').value = '';
+                
+                const submitBtn = document.querySelector('#orderDetailsForm .btn[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.textContent = 'Save Details';
+                }
             }
-        }
+            
+            modal.style.display = 'flex';
+        });
     }
 
-    // Save order details from modal to localStorage
+    // Modal close functionality removed - only close via X or Cancel button
+
+    // Enhanced order details form handler
     const orderDetailsForm = document.getElementById('orderDetailsForm');
     if (orderDetailsForm) {
         orderDetailsForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const orderName = document.getElementById('orderName').value;
-            const orderAddress = document.getElementById('orderAddress').value;
-            const orderPhone = document.getElementById('orderPhone').value;
-            // Save to localStorage
-            localStorage.setItem('orderDetails', JSON.stringify({
+            
+            const orderName = document.getElementById('orderName').value.trim();
+            const orderAddress = document.getElementById('orderAddress').value.trim();
+            const orderPhone = document.getElementById('orderPhone').value.trim();
+            
+            if (!orderName || !orderAddress || !orderPhone) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
+            if (!phoneRegex.test(orderPhone)) {
+                showNotification('Please enter a valid phone number', 'error');
+                return;
+            }
+            
+            orderDetails = {
                 orderName,
                 orderAddress,
-                orderPhone
-            }));
+                orderPhone,
+                isEntered: true
+            };
+            
+            saveOrderDetails();
+            updateOrderDetailsButton();
             document.getElementById('id01').style.display = 'none';
-            alert('Order details saved!');
+            showNotification('Order details saved successfully!', 'success');
         });
     }
 });
