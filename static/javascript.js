@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             div.innerHTML = `
                 <span>${item.name}</span> 
                 <span>$${item.price.toFixed(2)}</span> 
-                <input type="number" min="1" value="${item.qty}" style="width:60px;" data-idx="${idx}" />
+                <input type="number" min="1" max="99" value="${item.qty}" style="width:60px;" data-idx="${idx}" />
                 <button data-idx="${idx}" class="removeBtn">Remove</button>
             `;
             listcart.appendChild(div);
@@ -159,15 +159,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ENHANCED: Cart quantity validation with proper error messages and input validation
     listcart.addEventListener('change', function(e) {
         if (e.target.type === 'number') {
             const idx = parseInt(e.target.getAttribute('data-idx'));
-            const newQty = Math.max(1, parseInt(e.target.value) || 1);
+            let newQty = parseInt(e.target.value) || 1;
+            
+            // Frontend validation
+            if (newQty < 1) {
+                showNotification('Quantity must be at least 1', 'error');
+                newQty = 1;
+                e.target.value = 1;
+            } else if (newQty > 99) {
+                showNotification('Maximum quantity is 99', 'error');
+                newQty = 99;
+                e.target.value = 99;
+            }
+            
             cart[idx].qty = newQty;
             updateCartUI();
             saveCart();
         }
     });
+
+    // Input validation to prevent invalid quantities from being entered
+    listcart.addEventListener('input', function(e) {
+        if (e.target.type === 'number') {
+            let value = parseInt(e.target.value);
+            
+            // Prevent entering values outside valid range
+            if (value > 99) {
+                e.target.value = 99;
+                showNotification('Maximum quantity is 99', 'error');
+            } else if (value < 1 && e.target.value !== '') {
+                e.target.value = 1;
+                showNotification('Minimum quantity is 1', 'error');
+            }
+        }
+    });
+
+
 
     listcart.addEventListener('click', function(e) {
         if (e.target.classList.contains('removeBtn')) {
@@ -192,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTab.style.display = 'none';
         });
 
-    // Enhanced checkout button handler
+    // ENHANCED: Checkout button handler with pre-validation and better error handling
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function(e) {
@@ -209,6 +240,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
+            // ADDED: Frontend pre-validation to catch quantity issues
+            for (let i = 0; i < cart.length; i++) {
+                const item = cart[i];
+                
+                if (item.qty > 99) {
+                    showNotification(`${item.name}: Quantity cannot exceed 99. Please adjust your cart.`, 'error');
+                    return;
+                }
+                
+                if (item.qty < 1) {
+                    showNotification(`${item.name}: Quantity must be at least 1.`, 'error');
+                    return;
+                }
+            }
+
             const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
             
             fetch('/checkout', {
@@ -222,17 +268,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     orderDetails: orderDetails
                 })
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect_url) {
-                    window.location.href = data.redirect_url;
-                } else {
-                    showNotification('Error processing checkout', 'error');
-                }
+            .then(response => {
+                return response.json().then(data => {
+                    if (response.ok) {
+                        // Success response (200)
+                        if (data.redirect_url) {
+                            window.location.href = data.redirect_url;
+                        }
+                    } else {
+                        // Error response (400, 500, etc.) - Shows specific backend error
+                        const errorMessage = data.error || data.message || 'Error processing checkout';
+                        showNotification(errorMessage, 'error');
+                    }
+                }).catch(jsonError => {
+                    console.error('JSON parsing error:', jsonError);
+                    showNotification('Invalid response from server', 'error');
+                });
             })
             .catch(error => {
-                console.error('Error:', error);
-                showNotification('Error processing checkout', 'error');
+                showNotification('Network error occurred', 'error');
             });
         });
     }
@@ -272,9 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Modal close functionality removed - only close via X or Cancel button
-
-    // Enhanced order details form handler
+    // ENHANCED: Order details form handler with FIXED phone validation
     const orderDetailsForm = document.getElementById('orderDetailsForm');
     if (orderDetailsForm) {
         orderDetailsForm.addEventListener('submit', function(e) {
@@ -284,14 +336,43 @@ document.addEventListener('DOMContentLoaded', function() {
             const orderAddress = document.getElementById('orderAddress').value.trim();
             const orderPhone = document.getElementById('orderPhone').value.trim();
             
+            // Enhanced validation matching backend
             if (!orderName || !orderAddress || !orderPhone) {
                 showNotification('Please fill in all fields', 'error');
                 return;
             }
             
-            const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
-            if (!phoneRegex.test(orderPhone)) {
-                showNotification('Please enter a valid phone number', 'error');
+            if (orderName.length < 2) {
+                showNotification('Name must be at least 2 characters long', 'error');
+                return;
+            }
+            
+            if (orderName.length > 100) {
+                showNotification('Name cannot exceed 100 characters', 'error');
+                return;
+            }
+            
+            if (orderAddress.length < 10) {
+                showNotification('Address must be at least 10 characters long', 'error');
+                return;
+            }
+            
+            if (orderAddress.length > 200) {
+                showNotification('Address cannot exceed 200 characters', 'error');
+                return;
+            }
+            
+            // SIMPLE PHONE VALIDATION
+            // Check if phone has at least some digits
+            const digitsOnly = orderPhone.replace(/\D/g, '');
+            
+            if (digitsOnly.length < 8) {
+                showNotification('Phone number too short - please enter at least 8 digits', 'error');
+                return;
+            }
+            
+            if (digitsOnly.length > 15) {
+                showNotification('Phone number too long - maximum 15 digits allowed', 'error');
                 return;
             }
             
