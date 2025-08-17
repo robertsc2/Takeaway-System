@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (details.orderAddress) document.getElementById('state').value = details.orderAddress;
     if (details.orderPhone) document.getElementById('phone').value = details.orderPhone;
 
-    // FIXED: Update the price field with cart total
+    // Update the price field with cart total
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     document.getElementById('price').value = `$${total.toFixed(2)}`;
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const orderDetails = JSON.parse(localStorage.getItem('orderDetails') || '{}');
         const cart = JSON.parse(localStorage.getItem('cart') || '[]');
         
-        // Validate we have the required data
+        // Validate I have the required data
         if (!orderDetails.isEntered || cart.length === 0) {
             showNotification('Missing order details or cart is empty', 'error');
             return;

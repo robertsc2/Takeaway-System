@@ -17,51 +17,51 @@
         />
     </head>
     <body>
-    <header>
-        <nav class="navbar flex between wrapper">
-            <a href="/" class="logo">Oingo Boingo Brothers</a>
-            <ul class="nav-links flex gap-3">
-                <li><a href="/">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/#store-info">Contact</a></li>
-            </ul>
-            <div class="desktop-action flex gap-2">
-                <a class="cart-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-value">0</span>
-                </a>
-                <!-- Button to open the modal order details form -->
-                <button onclick="document.getElementById('id01').style.display='flex'" class="signin btn">
-                    Enter Order Details &nbsp;
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </button>
+        <header>
+            <nav class="navbar flex between wrapper">
+                <a href="/" class="logo">Oingo Boingo Brothers</a>
+                <ul class="nav-links flex gap-3">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/#store-info">Contact</a></li>
+                </ul>
+                <div class="desktop-action flex gap-2">
+                    <a class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-value">0</span>
+                    </a>
+                    <!-- Button to open the modal order details form -->
+                    <button onclick="document.getElementById('id01').style.display='flex'" class="signin btn">
+                        Enter Order Details &nbsp;
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
 
-                <div id="id01" class="modal">
-                    <div class="modal-content animate">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                        <div class="imgcontainer">
-                            <img src="/static/images/pfp.webp" alt="Avatar" class="avatar" />
+                    <div id="id01" class="modal">
+                        <div class="modal-content animate">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <div class="imgcontainer">
+                                <img src="/static/images/pfp.webp" alt="Avatar" class="avatar" />
+                            </div>
+                            <form class="modal-form" id="orderDetailsForm">
+                                <div class="container">
+                                    <label for="orderName"><b>Order Name</b></label>
+                                    <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required />
+                                    <label for="orderAddress"><b>Address</b></label>
+                                    <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required />
+                                    <label for="orderPhone"><b>Phone Number</b></label>
+                                    <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required />
+                                    <button type="submit" class="btn">Save Details</button>
+                                </div>
+                                <div class="container modal-footer">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
+                                </div>
+                            </form>
                         </div>
-                        <form class="modal-form" id="orderDetailsForm">
-                            <div class="container">
-                                <label for="orderName"><b>Order Name</b></label>
-                                <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required />
-                                <label for="orderAddress"><b>Address</b></label>
-                                <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required />
-                                <label for="orderPhone"><b>Phone Number</b></label>
-                                <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required />
-                                <button type="submit" class="btn">Save Details</button>
-                            </div>
-                            <div class="container modal-footer">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
         <div class="seperating-bar"></div>
 
@@ -75,7 +75,7 @@
                             <span>Brothers </span>
                         </h1>
                         <p class="para">
-                            Your Favourite Takeaway Food<br/>
+                            Your Favourite Takeaway Food<br />
                             Delivered Fast and Fresh!
                         </p>
                         <div>
@@ -91,6 +91,7 @@
 
             <div class="seperating-bar-2"></div>
 
+            <!-- Why Us Section -->
             <section>
                 <div class="wrapper p-top">
                     <div class="text-center">
@@ -144,7 +145,7 @@
                 <div class="menu-list text-center flex mt-4 gap-3">
                     <div class="order-card">
                         <div class="card-image">
-                            <img src="/static/Burgers/Mathewburger.png" alt="Mathew Burger"  />
+                            <img src="/static/Burgers/Mathewburger.png" alt="Mathew Burger" />
                         </div>
                         <h4>The Mathew Burger</h4>
                         <h4 class="price">$5.99</h4>
@@ -153,7 +154,7 @@
 
                     <div class="order-card">
                         <div class="card-image">
-                            <img src="/static/food/sprite.jpg" alt="Sprite"  />
+                            <img src="/static/food/sprite.jpg" alt="Sprite" />
                         </div>
                         <h4>Sprite</h4>
                         <h4 class="price">$4.50</h4>
@@ -162,7 +163,7 @@
 
                     <div class="order-card">
                         <div class="card-image">
-                            <img src="/static/food/Cheese Pizza.png" alt="Cheese Pizza"  />
+                            <img src="/static/food/Cheese Pizza.png" alt="Cheese Pizza" />
                         </div>
                         <h4>Cheese Pizza</h4>
                         <h4 class="price">$11.00</h4>
@@ -172,16 +173,9 @@
             </section>
         </main>
 
-
-
-
-
-
-
-
-
         <div class="seperating-bar-2"></div>
 
+        <!-- Store info Section -->
         <section class="store-info wrapper" id="store-info">
             <div class="store-details">
                 <div>
@@ -198,6 +192,7 @@
             </div>
         </section>
         <div class="seperating-bar-3"></div>
+
         <!-- Footer Section -->
         <footer>
             <div class="wrapper">
@@ -205,34 +200,29 @@
                     <p>&copy; 2025 Oingo Boingo Brothers. All rights reserved.</p>
                     <ul class="social-links flex gap-2">
                         <li>
-                            <i class="fa-brands fa-facebook"></i></a>
+                            <i class="fa-brands fa-facebook"></i>
                         </li>
                         <li>
-                            <i class="fa-brands fa-twitter"></i></a>
+                            <i class="fa-brands fa-twitter"></i>
                         </li>
                         <li>
-                            <i class="fa-brands fa-instagram"></i></a>
+                            <i class="fa-brands fa-instagram"></i>
                         </li>
                     </ul>
                 </div>
             </div>
         </footer>
+
         <div class="cartTab" id="cartTab">
             <h1>Shopping Cart</h1>
             <hr class="cart-divider" />
             <div class="listcart"></div>
-            <div class="cart-total">
-                Total: $<span id="cartTotal">0.00</span>
-            </div>
+            <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
             <div class="cart-buttons">
                 <a id="closeCart" class="cartbtn">CLOSE</a>
                 <a href="/payment" id="checkoutBtn" class="cartbtn">CHECKOUT</a>
             </div>
         </div>
-        
-
-
-        </div>
-        <script src="/static/javascript.js"> </script>
+        <script src="/static/javascript.js"></script>
     </body>
 </html>

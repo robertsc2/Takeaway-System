@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // ENHANCED: Cart quantity validation with proper error messages and input validation
+    // Cart quantity validation with proper error messages and input validation
     listcart.addEventListener('change', function(e) {
         if (e.target.type === 'number') {
             const idx = parseInt(e.target.getAttribute('data-idx'));
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTab.style.display = 'none';
         });
 
-    // ENHANCED: Checkout button handler with pre-validation and better error handling
+    // Checkout button handler 
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', function(e) {
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // ADDED: Frontend pre-validation to catch quantity issues
+            // Frontend pre-validation to catch quantity issues
             for (let i = 0; i < cart.length; i++) {
                 const item = cart[i];
                 
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced order details button handler
+    // order details button handler
     const orderDetailsBtn = document.querySelector('.signin.btn');
     if (orderDetailsBtn) {
         orderDetailsBtn.addEventListener('click', function() {
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ENHANCED: Order details form handler with FIXED phone validation
+    // Order details form handler with FIXED phone validation
     const orderDetailsForm = document.getElementById('orderDetailsForm');
     if (orderDetailsForm) {
         orderDetailsForm.addEventListener('submit', function(e) {
@@ -336,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const orderAddress = document.getElementById('orderAddress').value.trim();
             const orderPhone = document.getElementById('orderPhone').value.trim();
             
-            // Enhanced validation matching backend
             if (!orderName || !orderAddress || !orderPhone) {
                 showNotification('Please fill in all fields', 'error');
                 return;

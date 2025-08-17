@@ -1,149 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Takeaway System Website</title>
-      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   </head>
-   <body>
-      <!-- Header Section -->
-          <header>
-        <nav class="navbar flex between wrapper">
-            <a href="/" class="logo">Oingo Boingo Brothers</a>
-            <ul class="nav-links flex gap-3">
-                <li><a href="/">Home</a></li>
-                <li><a href="/menu">Menu</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/#store-info">Contact</a></li>
-            </ul>
-            <div class="desktop-action flex gap-2">
-                <a class="cart-icon">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-value">0</span>
-                </a>
-                <!-- Button to open the modal order details form -->
-                <button onclick="document.getElementById('id01').style.display='flex'" class="signin btn">
-                    Enter Order Details &nbsp;
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Takeaway System Website</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body>
+        <!-- Header Section -->
+        <header>
+            <nav class="navbar flex between wrapper">
+                <a href="/" class="logo">Oingo Boingo Brothers</a>
+                <ul class="nav-links flex gap-3">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/#store-info">Contact</a></li>
+                </ul>
+                <div class="desktop-action flex gap-2">
+                    <a class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-value">0</span>
+                    </a>
+                    <!-- Button to open the modal order details form -->
+                    <button onclick="document.getElementById('id01').style.display='flex'" class="signin btn">
+                        Enter Order Details &nbsp;
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
 
-                <div id="id01" class="modal">
-                    <div class="modal-content animate">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                        <div class="imgcontainer">
-                            <img src="/static/images/pfp.webp" alt="Avatar" class="avatar" />
+                    <div id="id01" class="modal">
+                        <div class="modal-content animate">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                            <div class="imgcontainer">
+                                <img src="/static/images/pfp.webp" alt="Avatar" class="avatar" />
+                            </div>
+                            <form class="modal-form" id="orderDetailsForm">
+                                <div class="container">
+                                    <label for="orderName"><b>Order Name</b></label>
+                                    <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required pattern="[A-Za-z\s]+" title="Only letters and spaces allowed" />
+                                    <label for="orderAddress"><b>Address</b></label>
+                                    <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed" />
+                                    <label for="orderPhone"><b>Phone Number</b></label>
+                                    <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required pattern="[0-9\s\-]+" title="Only numbers, spaces, and dashes allowed" />
+                                    <button type="submit" class="btn">Save Details</button>
+                                </div>
+                                <div class="container modal-footer">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
+                                </div>
+                            </form>
                         </div>
-                        <form class="modal-form" id="orderDetailsForm">
-                            <div class="container">
-                                <label for="orderName"><b>Order Name</b></label>
-                                <input type="text" placeholder="Enter Order Name" name="orderName" id="orderName" required pattern="[A-Za-z\s]+" title="Only letters and spaces allowed" />
-                                <label for="orderAddress"><b>Address</b></label>
-                                <input type="text" placeholder="Enter Address" name="orderAddress" id="orderAddress" required pattern="[A-Za-z0-9\s]+" title="Only letters, numbers, and spaces allowed" />
-                                <label for="orderPhone"><b>Phone Number</b></label>
-                                <input type="tel" placeholder="Enter Phone Number" name="orderPhone" id="orderPhone" required pattern="[0-9\s\-]+" title="Only numbers, spaces, and dashes allowed" />
-                                <button type="submit" class="btn">Save Details</button>
-                            </div>
-                            <div class="container modal-footer">
-                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn">Cancel</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
+            </nav>
+        </header>
 
-    </header>
+        <div class="seperating-bar"></div>
 
-     
-      <div class="seperating-bar"></div>
-
-
-
-
-
-
-
-      
-      <!-- About Section -->
-      <section class="wrapper p-top">
-         <div class="text-center">
-            <h5>About Us</h5>
-            <h2>Our Story</h2>
-         </div>
-         <div class="about-content text-center">
-            <p>Welcome to Oingo Boingo Brothers, your number one source for all things food. We're dedicated to giving you the very best of takeaway meals, 
-               with a focus on dependability, customer service, and uniqueness.</p>
-            <p>Founded in 2023, Oingo Boingo Brothers has come a long way from its beginnings. 
-               When we first started out, our passion for delicious food drove us to do tons of research 
-               so that Oingo Boingo Brothers can offer you the world's most advanced takeaway system.</p>
-            <p>We now serve customers all over the country and are thrilled that we're able to turn our passion into our own website.</p>
-         </div>
-      </section>
-      <div class="seperating-bar-3"></div>
-
-      <!-- Team Section -->
-      <section class="wrapper p-top"> 
-         <div class="text-center">
-            <h5>Meet Our Team</h5>
-            <h2>Our Chefs</h2>
-         </div>
-         <div class="team-content text-center flex mt-4 gap-3">
-            <div class="team-member">
-               <img src="/static/Chefs/Chef caleb.jpg" alt="Chef Caleb">
-               <h3>Caleb Fryer</h3>
-               <p>Head Chef</p>
+        <!-- About Section -->
+        <section class="wrapper p-top">
+            <div class="text-center">
+                <h5>About Us</h5>
+                <h2>Our Story</h2>
             </div>
-            <div class="team-member">
-               <img src="/static/Chefs/Chef Jacob.jpg" alt="Chef Jacob">
-               <h3>Jacob SixSeveny</h3>
-               <p>Sous Chef</p>
+            <div class="about-content text-center">
+                <p>Welcome to Oingo Boingo Brothers, your number one source for all things food. We're dedicated to giving you the very best of takeaway meals, with a focus on dependability, customer service, and uniqueness.</p>
+                <p>
+                    Founded in 2023, Oingo Boingo Brothers has come a long way from its beginnings. When we first started out, our passion for delicious food drove us to do tons of research so that Oingo Boingo Brothers can offer you the
+                    world's most advanced takeaway system.
+                </p>
+                <p>We now serve customers all over the country and are thrilled that we're able to turn our passion into our own website.</p>
             </div>
-            <div class="team-member">
-               <img src="/static/Chefs/Mathew Chef.jpg" alt="Chef Mathew">
-               <h3>Mathew Read</h3>
-               <p>Pâtissier</p>
-            </div>
-            <div class="team-member">
-               <img src="/static/Chefs/Chef Dylan.png" alt="Chef Dylan">
-               <h3>Dylan Barnyard</h3>
-               <p>Pâtissier</p>
-            </div>
-         </div>
-      </section>
+        </section>
+        <div class="seperating-bar-3"></div>
 
-      <!-- Footer Section -->
-      <footer>
-         <div class="wrapper">
-            <div class="footer-content">
-               <p>&copy; 2025 Oingo Boingo Brothers. All rights reserved.</p>
-               <ul class="social-links flex gap-2">
-                  <li><i class="fa-brands fa-facebook"></i></a></li>
-                  <li><i class="fa-brands fa-twitter"></i></a></li>
-                  <li><i class="fa-brands fa-instagram"></i></a></li>
-               </ul>
+        <!-- Team Section -->
+        <section class="wrapper p-top">
+            <div class="text-center">
+                <h5>Meet Our Team</h5>
+                <h2>Our Chefs</h2>
             </div>
-         </div>
-      </footer>
-      <div class="cartTab" id="cartTab">
-         <h1>Shopping Cart</h1>
-         <hr class="cart-divider" />
-         <div class="listcart"></div>
-         <div class="cart-total">
-             Total: $<span id="cartTotal">0.00</span>
-         </div>
-         <div class="cart-buttons">
-             <a id="closeCart" class="cartbtn">CLOSE</a>
-             <a href="/payment" id="checkoutBtn" class="cartbtn">CHECKOUT</a>
-         </div>
-     </div>
-     
+            <div class="team-content text-center flex mt-4 gap-3">
+                <div class="team-member">
+                    <img src="/static/Chefs/Chef caleb.jpg" alt="Chef Caleb" />
+                    <h3>Caleb Fryer</h3>
+                    <p>Head Chef</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/Chefs/Chef Jacob.jpg" alt="Chef Jacob" />
+                    <h3>Jacob SixSeveny</h3>
+                    <p>Sous Chef</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/Chefs/Mathew Chef.jpg" alt="Chef Mathew" />
+                    <h3>Mathew Read</h3>
+                    <p>Pâtissier</p>
+                </div>
+                <div class="team-member">
+                    <img src="/static/Chefs/Chef Dylan.png" alt="Chef Dylan" />
+                    <h3>Dylan Barnyard</h3>
+                    <p>Pâtissier</p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Footer Section -->
+        <footer>
+            <div class="wrapper">
+                <div class="footer-content">
+                    <p>&copy; 2025 Oingo Boingo Brothers. All rights reserved.</p>
+                    <ul class="social-links flex gap-2">
+                        <li><i class="fa-brands fa-facebook"></i></li>
+                        <li><i class="fa-brands fa-twitter"></i></li>
+                        <li><i class="fa-brands fa-instagram"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <div class="cartTab" id="cartTab">
+            <h1>Shopping Cart</h1>
+            <hr class="cart-divider" />
+            <div class="listcart"></div>
+            <div class="cart-total">Total: $<span id="cartTotal">0.00</span></div>
+            <div class="cart-buttons">
+                <a id="closeCart" class="cartbtn">CLOSE</a>
+                <a href="/payment" id="checkoutBtn" class="cartbtn">CHECKOUT</a>
+            </div>
+        </div>
 
-     </div>
-     <script src="/static/javascript.js"> </script>
- </body>
+        <script src="/static/javascript.js"></script>
+    </body>
 </html>

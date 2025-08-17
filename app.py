@@ -32,7 +32,6 @@ def validate_cart_item(item):
             return False, "Quantity cannot exceed 99"
     except (ValueError, TypeError):
         return False, "Quantity must be a valid integer"
-
     return True, None
 
 
@@ -51,7 +50,7 @@ def validate_order_details(details):
             return False, f"{field} must be a non-empty string"
 
     name = details['orderName'].strip()
-    if len(name) < 2:
+    if len(name) < 2:   
         return False, "Name must be at least 2 characters long"
     if len(name) > 50:
         return False, "Name cannot exceed 50 characters"
